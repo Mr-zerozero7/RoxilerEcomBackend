@@ -11,11 +11,12 @@ app.use(express.json());
 
 app.use(cors());
 
+
+MONGO_URL = 'mongodb+srv://vijaysai:krishNa07@cluster0.foghuqg.mongodb.net/?retryWrites=true&w=majority';
+
 //  MONGODB CONNECTION
-mongoose.connect(process.env.MONGO_URL, {
-    useNewUrlParser : true,
-    useUnifiedTopology: true
-})
+mongoose.connect(MONGO_URL)
+
 .then(()=>{
     console.log('Mongo Connected Successfully')
 })
@@ -91,7 +92,6 @@ app.get('/api/transactions', async (request, response)=>{
 //  GET Statistics
 app.get('/api/statistics', async (request,response)=>{
     try {
-
         const {month} = request.query;
 
         //  TOTAL SALE AMOUNT
@@ -109,7 +109,7 @@ app.get('/api/statistics', async (request,response)=>{
                     totalAmount: {$sum: '$price'},
                 },
             },
-        ]).option({ maxTimeMS: 60000 });
+        ]);
 
         //  TOTAL SOLD ITEMS
         const totalSoldItems = await Transaction.countDocuments({
