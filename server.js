@@ -78,7 +78,7 @@ app.get('/api/transactions', async (request, response)=>{
             {$limit: perPage},
             // {$skip: page * perPage},
         ]
-        const transaction = await Transaction.aggregate(pipeline).option({ maxTimeMS: 60000 });
+        const transaction = await Transaction.aggregate(pipeline).option({ maxTimeMS: 30000 });
         
         response.status(200).json({transaction});
 
