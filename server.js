@@ -12,10 +12,10 @@ app.use(express.json());
 app.use(cors());
 
 
-MONGO_URL = 'mongodb+srv://vijaysai:krishNa07@cluster0.foghuqg.mongodb.net/?retryWrites=true&w=majority';
+
 
 //  MONGODB CONNECTION
-mongoose.connect(MONGO_URL)
+mongoose.connect(process.env.MONGO_URL)
 
 .then(()=>{
     console.log('Mongo Connected Successfully')
