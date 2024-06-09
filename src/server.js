@@ -4,6 +4,7 @@ const mongoose = require('mongoose')
 const axios = require('axios')   
 const cors = require('cors')   
 require('dotenv').config();
+// const dotenv = require('dotenv')
 const Transaction = require('./models/Transaction')
 
 const app = express();
@@ -12,7 +13,7 @@ app.use(express.json());
 app.use(cors());
 
 
-
+// dotenv.config({path: './config.env'})
 
 //  MONGODB CONNECTION
 mongoose.connect(process.env.MONGO_URL)
